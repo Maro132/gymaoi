@@ -560,7 +560,7 @@
                 area.classList.remove('hidden');
                 // إنشاء زرار لكل زاوية في عضلة الصدر
                 gymData.chest.angles.forEach(angle => {
-                    conconst btn = document.createElement('button');
+                    const btn = document.createElement('button');
                     btn.className = 'target-btn';
                     btn.innerText = `+ ${angle.name}`;
                     // عند الضغط، يتم إضافة الكارت
