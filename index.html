@@ -560,4 +560,92 @@
                 area.classList.remove('hidden');
                 // إنشاء زرار لكل زاوية في عضلة الصدر
                 gymData.chest.angles.forEach(angle => {
-                    con
+                    conconst btn = document.createElement('button');
+                    btn.className = 'target-btn';
+                    btn.innerText = `+ ${angle.name}`;
+                    // عند الضغط، يتم إضافة الكارت
+                    btn.onclick = () => addCard(angle);
+                    btnsContainer.appendChild(btn);
+                });
+            }
+        }
+
+        function addCard(angleObj) {
+            const list = document.getElementById('routineList');
+            document.getElementById('emptyMsg').style.display = 'none';
+
+            // إنشاء ID عشوائي للكارت عشان الراديو بوتن يشتغل صح
+            const uniqueId = 'card_' + Math.random().toString(36).substr(2, 9);
+
+            // تحضير قائمة التمارين (Radio Buttons)
+            let exercisesHTML = '';
+            angleObj.exercises.forEach(ex => {
+                const exName = typeof ex === 'string' ? ex : ex.name;
+                const exImage = typeof ex === 'string' ? '' : ex.image;
+                exercisesHTML += `
+                    <label class="radio-label" data-exercise="${uniqueId}">
+                        <input type="radio" name="${uniqueId}" value="${exName}">
+                        ${exImage ? `<img src="${exImage}" alt="${exName}" style="width: 50px; height: 50px; border-radius: 4px; margin-left: 10px;">` : ''}
+                        <span>${exName}</span>
+                    </label>
+                `;
+            });
+
+            // بناء الكارت
+            const card = document.createElement('div');
+            card.className = 'workout-card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <div style="display:flex; align-items:center;">
+                        <span class="drag-handle">⋮⋮</span>
+                        <span class="angle-name">${angleObj.name}</span>
+                    </div>
+                    <button class="delete-btn" onclick="removeCard(this)">حذف</button>
+                </div>
+                <div class="exercise-options">
+                    ${exercisesHTML}
+                </div>
+            `;
+
+            list.appendChild(card);
+            
+            // Add event listeners for radio buttons
+            const radioInputs = card.querySelectorAll(`input[name="${uniqueId}"]`);
+            radioInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const labels = card.querySelectorAll(`[data-exercise="${uniqueId}"]`);
+                    labels.forEach(label => {
+                        if (label.querySelector('input') !== this) {
+                            label.classList.add('hidden-exercise');
+                        } else {
+                            label.classList.remove('hidden-exercise');
+                        }
+                    });
+                });
+            });
+        }
+
+        function removeCard(btn) {
+            btn.closest('.workout-card').remove();
+            // لو القائمة فضيت، نرجع رسالة "لم تختر.."
+            if (document.getElementById('routineList').children.length <= 1) {
+                document.getElementById('emptyMsg').style.display = 'block';
+            }
+        }
+
+        // --- 4. تفعيل السحب والإفلات ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const list = document.getElementById('routineList');
+            new Sortable(list, {
+                animation: 150,
+                handle: '.card-header', // السحب من الهيدر فقط
+                ghostClass: 'sortable-ghost',
+                dragClass: 'sortable-drag',
+                delay: 100, // تأخير بسيط للموبايل
+                delayOnTouchOnly: true
+            });
+        });
+
+    </script>
+</body>
+</html>
