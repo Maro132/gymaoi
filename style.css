@@ -1,0 +1,308 @@
+/* --- ألوان الموقع --- */
+:root {
+    --bg-black: #0d0d0d;       /* أسود */
+    --card-grey: #1f1f1f;      /* رصاصي غامق */
+    --text-grey: #b3b3b3;      /* رصاصي فاتح للنص */
+    --primary-blue: #004e92;   /* أزرق غامق */
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--white);
+    overflow-x: hidden;
+    padding-bottom: 60px;
+}
+
+/* --- الهيدر (البار العلوي) --- */
+header {
+    background-color: var(--card-grey);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 3px solid var(--primary-blue);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(110, 108, 108, 0.7);
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+}
+
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--white);
+    padding: 5px;
+}
+
+/* --- القائمة الجانبية --- */
+.side-menu {
+    position: fixed;
+    top: 70px;
+    right: -260px;
+    width: 260px;
+    height: calc(100vh - 70px);
+    background-color: var(--card-grey);
+    transition: 0.3s ease-in-out;
+    z-index: 999;
+    border-left: 1px solid #333;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.side-menu ul { list-style: none; padding: 20px; }
+.side-menu ul li { padding: 15px 10px; border-bottom: 1px solid #333; }
+.side-menu ul li a { color: var(--text-grey); text-decoration: none; font-size: 18px; font-weight: 700; display: block; }
+.side-menu ul li a:hover { color: var(--primary-blue); }
+
+/* --- المحتوى العام --- */
+.container {
+    margin-top: 90px;
+    padding: 20px;
+    min-height: 80vh;
+}
+
+.hidden { display: none !important; }
+
+/* --- الصفحة الرئيسية --- */
+#home-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70vh;
+}
+
+#home-section h1 { font-size: 2.5rem; margin-bottom: 10px; }
+#home-section p { color: var(--text-grey); font-size: 1.1rem; margin-bottom: 30px; }
+
+.cta-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px 5px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    font-weight: 1000;
+    box-shadow: 0 4px 10px rgba(38, 123, 199, 0.4);
+}
+
+/* --- صفحة التمرين --- */
+.control-panel {
+    background-color: var(--card-grey);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+}
+
+.section-title {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    border-right: 4px solid var(--primary-blue);
+    padding-right: 10px;
+}
+
+select {
+    width: 100%; padding: 15px; background-color: var(--bg-black); color: white;
+    border: 1px solid #444; border-radius: 8px; margin-bottom: 20px; font-size: 1rem;
+    outline: none;
+}
+
+/* أزرار الزوايا */
+.targets-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.target-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.target-btn:hover { background-color: var(--primary-blue); transform: scale(1.05); }
+
+/* --- كروت التمارين --- */
+.routine-list { display: flex; flex-direction: column; gap: 15px; }
+
+.workout-card {
+    background-color: var(--card-grey);
+    border-radius: 10px;
+    border-right: 6px solid var(--primary-blue);
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* ستايل السحب */
+.sortable-ghost { opacity: 0.4; background: #003366; }
+.sortable-drag { cursor: grabbing; }
+
+.card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px; background: rgba(255,255,255,0.03);
+    cursor: grab; border-bottom: 1px solid #333;
+}
+.card-header:active { cursor: grabbing; }
+
+.drag-handle { font-size: 1.4rem; color: #555; margin-left: 10px; }
+.angle-name { font-weight: bold; font-size: 1.1rem; color: var(--primary-blue); }
+
+.delete-btn {
+    background: #a93226; color: white; border: none;
+    padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.85rem;
+}
+
+.exercise-options { padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+
+.radio-label {
+    display: flex; align-items: center; background: var(--bg-black);
+    padding: 12px; border-radius: 6px; cursor: pointer; border: 1px solid #333;
+}
+.radio-label:hover { border-color: var(--primary-blue); }
+.radio-label input { margin-left: 12px; accent-color: var(--primary-blue); width: 18px; height: 18px; }
+
+.radio-label.hidden-exercise {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+}
+
+/* --- Timer Page --- */
+#timer-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    gap: 30px;
+}
+
+#timer-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+}
+
+.timer-circle {
+    width: 250px;
+    height: 250px;
+    border: 8px solid var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-grey);
+    box-shadow: 0 8px 20px rgba(38, 123, 199, 0.3);
+    flex-shrink: 0;
+}
+
+.timer-time {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    font-family: 'Courier New', monospace;
+}
+
+.timer-arrows {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.arrow-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-btn:hover {
+    background-color: #003366;
+    transform: scale(1.1);
+}
+
+.timer-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.start-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(38, 123, 199, 0.4);
+    transition: 0.3s ease;
+}
+
+.start-btn:hover {
+    background-color: #003366;
+    transform: scale(1.05);
+}
+
+.start-btn.running {
+    background-color: #a93226;
+}
+
+.start-btn.running:hover {
+    background-color: #922b21;
+}
+
+.reset-btn {
+    background-color: #a93226;
+}
+
+.reset-btn:hover {
+    background-color: #922b21;
+}
