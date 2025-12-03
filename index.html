@@ -5,9 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>چيماوي | Gymawy (Chest Edition)</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+</head>
+<body>
 
-    <style>
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <div class="logo" onclick="goHome()" style="cursor: pointer;">چيماوي</div>
+        <div style="width: 30px;"></div>
+    </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <ul>
+            <li><a href="#" onclick="goHome()">الرئيسية</a></li>
+            <li><a href="#" onclick="goWorkout()">تمرينتي</a></li>
+            <li><a href="#" onclick="goTimer()">مؤقت الراحة</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <section id="home-section">
+            <h1>أهلاً بك في چيماوي</h1>
+            <p>نظم تمارينك بكل احترافية وسهولة.</p>
+            <button class="cta-btn" onclick="goWorkout()">نظم تمرينتي</button>
+        </section>
+
+        <section id="workout-section" class="hidden">
+
+            <div class="control-panel">
+                <h2 class="section-title">اختر العضلة</h2>
+                <select id="muscleSelect" onchange="loadAngles()">
+                    <option value="" disabled selected>-- اختر العضلة --</option>
+                    <option value="chest">عضلة الصدر (Chest)</option>
+                </select>
+
+                <div id="anglesArea" class="hidden">
+                    <p style="color: var(--text-grey); margin-bottom: 10px; font-size: 0.9rem;">اختر الزاوية لإضافتها:</p>
+                    <div class="targets-grid" id="anglesButtons"></div>
+                </div>
+            </div>
+
+            <div id="routineList" class="routine-list">
+                <p id="emptyMsg" style="text-align: center; color: #555; margin-top: 20px;">لم تختر أي تمارين بعد..</p>
+            </div>
+
+        </section>
+
+        <section id="timer-section" class="hidden">
+            <h2>مؤقت الراحة</h2>
+
+            <div class="timer-container">
+                <div class="timer-circle">
+                    <div class="timer-time" id="timerDisplay">00:00</div>
+                </div>
+
+                <div class="timer-arrows">
+                    <button class="arrow-btn" onclick="increaseTimer()">▲</button>
+                    <button class="arrow-btn" onclick="decreaseTimer()">▼</button>
+                </div>
+            </div>
+
+            <div class="timer-controls">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button class="start-btn" id="startTimerBtn" onclick="toggleTimer()">ابدأ</button>
+                    <button class="start-btn reset-btn" onclick="resetTimerValue()">إعادة تعيين</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
         /* --- ألوان الموقع --- */
         :root {
             --bg-black: #0d0d0d;       /* أسود */
