@@ -265,3 +265,45 @@ function goChampions() {
     // إظهار قسم الأبطال
     document.getElementById('champions-section').classList.remove('hidden');
 }
+// Helper to hide all sections
+function hideAllSections() {
+    const sections = [
+        'home-section', 
+        'workout-section', 
+        'timer-section', 
+        'champions-section', 
+        'shorts-section'
+    ];
+    sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+    });
+    document.getElementById('sideMenu').classList.remove('active');
+}
+
+function goHome() {
+    hideAllSections();
+    document.getElementById('home-section').classList.remove('hidden');
+}
+
+function goWorkout() {
+    hideAllSections();
+    document.getElementById('workout-section').classList.remove('hidden');
+}
+
+function goTimer() {
+    hideAllSections();
+    document.getElementById('timer-section').classList.remove('hidden');
+    timerSeconds = 0;
+    updateTimerDisplay();
+}
+
+function goChampions() {
+    hideAllSections();
+    document.getElementById('champions-section').classList.remove('hidden');
+}
+
+function goShorts() {
+    hideAllSections();
+    document.getElementById('shorts-section').classList.remove('hidden');
+}
