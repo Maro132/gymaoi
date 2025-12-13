@@ -93,6 +93,7 @@ function goTimer() {
     document.getElementById('home-section').classList.add('hidden');
     document.getElementById('workout-section').classList.add('hidden');
     document.getElementById('timer-section').classList.remove('hidden');
+    document.getElementById('champions-section').classList.add('hidden');
     timerSeconds = 0;
     updateTimerDisplay();
 }
@@ -151,6 +152,7 @@ function goHome() {
     document.getElementById('home-section').classList.remove('hidden');
     document.getElementById('workout-section').classList.add('hidden');
     document.getElementById('timer-section').classList.add('hidden');
+    document.getElementById('champions-section').classList.add('hidden');
 }
 
 function goWorkout() {
@@ -158,6 +160,7 @@ function goWorkout() {
     document.getElementById('home-section').classList.add('hidden');
     document.getElementById('workout-section').classList.remove('hidden');
     document.getElementById('timer-section').classList.add('hidden');
+    document.getElementById('champions-section').classList.add('hidden');
 }
 
 // --- Exercise Management Logic ---
@@ -251,3 +254,14 @@ document.addEventListener('DOMContentLoaded', () => {
         delayOnTouchOnly: true
     });
 });
+function goChampions() {
+    document.getElementById('sideMenu').classList.remove('active');
+    
+    // إخفاء كل الأقسام
+    document.getElementById('home-section').classList.add('hidden');
+    document.getElementById('workout-section').classList.add('hidden');
+    document.getElementById('timer-section').classList.add('hidden');
+    
+    // إظهار قسم الأبطال
+    document.getElementById('champions-section').classList.remove('hidden');
+}
