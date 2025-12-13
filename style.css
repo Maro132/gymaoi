@@ -306,3 +306,65 @@ select {
 .reset-btn:hover {
     background-color: #922b21;
 }
+/* --- قسم أبطال مستر أولمبيا --- */
+.champions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* نظام شبكي متجاوب */
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.champion-card {
+    background-color: var(--card-grey);
+    border-radius: 15px;
+    overflow: hidden;
+    border-bottom: 5px solid var(--primary-blue); /* الخط الأزرق المميز للموقع */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.champion-card:hover {
+    transform: translateY(-10px); /* حركة خفيفة عند الوقوف عليها */
+}
+
+.champion-img-container {
+    width: 100%;
+    height: 350px; /* طول ثابت للصورة */
+    overflow: hidden;
+    position: relative;
+}
+
+.champion-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* لملء المساحة دون مط الصورة */
+    object-position: top center;
+}
+
+.champion-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.champion-name {
+    color: var(--primary-blue);
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+    font-weight: 900;
+}
+
+.champion-wins {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    background: rgba(0, 78, 146, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.champion-desc {
+    color: var(--text-grey);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
