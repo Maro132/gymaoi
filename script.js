@@ -143,24 +143,8 @@ const gymData = {
 };
 
 // --- Navigation Functions ---
-function toggleMenu() { 
-    document.getElementById('sideMenu').classList.toggle('active'); 
-}
-
-function goHome() {
-    document.getElementById('sideMenu').classList.remove('active');
-    document.getElementById('home-section').classList.remove('hidden');
-    document.getElementById('workout-section').classList.add('hidden');
-    document.getElementById('timer-section').classList.add('hidden');
-    document.getElementById('champions-section').classList.add('hidden');
-}
-
-function goWorkout() {
-    document.getElementById('sideMenu').classList.remove('active');
-    document.getElementById('home-section').classList.add('hidden');
-    document.getElementById('workout-section').classList.remove('hidden');
-    document.getElementById('timer-section').classList.add('hidden');
-    document.getElementById('champions-section').classList.add('hidden');
+function toggleMenu() {
+    document.getElementById('sideMenu').classList.toggle('active');
 }
 
 // --- Exercise Management Logic ---
@@ -268,11 +252,12 @@ function goChampions() {
 // Helper to hide all sections
 function hideAllSections() {
     const sections = [
-        'home-section', 
-        'workout-section', 
-        'timer-section', 
-        'champions-section', 
-        'shorts-section'
+        'home-section',
+        'workout-section',
+        'timer-section',
+        'champions-section',
+        'shorts-section',
+        'supplements-section'
     ];
     sections.forEach(id => {
         const el = document.getElementById(id);
@@ -306,4 +291,9 @@ function goChampions() {
 function goShorts() {
     hideAllSections();
     document.getElementById('shorts-section').classList.remove('hidden');
+}
+
+function goSupplements() {
+    hideAllSections();
+    document.getElementById('supplements-section').classList.remove('hidden');
 }
