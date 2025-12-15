@@ -424,3 +424,44 @@ select {
         grid-template-columns: repeat(6, 1fr);
     }
 }
+
+/* --- قسم المكملات الغذائية --- */
+.supplements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.supplement-card {
+    background-color: var(--card-grey);
+    border-radius: 15px;
+    overflow: hidden;
+    border-bottom: 5px solid var(--primary-blue);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    padding: 20px;
+    text-align: center;
+}
+
+.supplement-card:hover {
+    transform: translateY(-10px);
+}
+
+.supplement-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.supplement-name {
+    color: var(--primary-blue);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+
+.supplement-desc {
+    color: var(--text-grey);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
